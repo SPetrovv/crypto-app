@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
+/* App.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-image: url('/public/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-end; /* Align content to the right */
+  align-items: flex-start; /* Align content to the top */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  margin: 10px;
+}
+
+.connect-button,
+.disconnect-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.balances-container {
+  display: flex;
+}
+
+.token-balances {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto; /* Enable vertical scrolling for the token balances */
+}
+
+.latest-transactions-container {
+  flex: 1;
+  height: 300px; /* Set the desired height */
+  overflow-y: auto; /* Enable vertical scrolling for the latest transactions */
+  margin-top: 20px; /* Adjust as needed */
+  position: relative;
+}
+
+.latest-transactions-header {
+  position: sticky;
+  top: 0;
+  background-color: white; /* Add a background color if needed */
+  padding: 10px;
+  z-index: 1; /* Ensure the header appears above the scrolling content */
+}
+
+.latest-transactions-list {
+  padding: 10px;
+}
+.metamask-info {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background-color: rgba(0, 128, 0, 0.7);
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
 }
