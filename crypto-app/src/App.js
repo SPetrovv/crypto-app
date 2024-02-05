@@ -10,6 +10,7 @@ function App() {
   const [tokenBalances, setTokenBalances] = useState([]);
   const [latestTransactions, setLatestTransactions] = useState([]);
   const [web3, setWeb3] = useState(null);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   const connectToMetamask = async () => {
     try {
@@ -110,21 +111,45 @@ function App() {
   }, []);
 
 
+  // const windowStyle = {
+  //   width: '70vw', // 50% of the viewport width
+  //   height: '20vw', // Adjust the height to maintain the square aspect ratio (half of the width)
+  //   backgroundColor: 'white', // Set to black
+  //   borderRadius: '10px', // Adjust the radius as needed
+  //   position: 'absolute',
+  //   top: '50%',
+  //   left: '50%',
+  //   transform: 'translate(-50%, -50%)',
+  //   padding: '20px', // Add padding for better spacing
+  //   textAlign: 'center', // Center-align text
+  // };
   const windowStyle = {
-    width: '70vw', // 50% of the viewport width
-    height: '20vw', // Adjust the height to maintain the square aspect ratio (half of the width)
-    backgroundColor: 'white', // Set to black
-    borderRadius: '10px', // Adjust the radius as needed
+    width: '70vw',
+    height: '20vw',
+    borderRadius: '10px',
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    padding: '20px', // Add padding for better spacing
-    textAlign: 'center', // Center-align text
+    padding: '20px',
+    textAlign: 'center',
+    // Conditionally apply styles based on the theme
+    backgroundColor: darkTheme ? 'black' : 'white',
+    color: darkTheme ? 'white' : 'black',
+  };
+
+
+  const toggleTheme = () => {
+    setDarkTheme((prevTheme) => !prevTheme);
   };
 
   return (
     <div className="app-container">
+
+<button className={`theme-button ${darkTheme ? 'dark-theme' : 'light-theme'}`} onClick={toggleTheme}>
+        {darkTheme ? '🌙' : '☀️'}
+      </button>
+
       {connected ? (
         <div className="connected-container">
           <div className="metamask-info">
@@ -184,7 +209,8 @@ function App() {
         </div>
 
         <div className="latest-transactions-container">
-          <h2 className="latest-transactions-header">Latest Transactions</h2>
+          <h2 className={`latest-transactions-header ${darkTheme ? 'dark-theme' : 'light-theme'}`}
+          >Latest Transactions</h2>
           <div className="latest-transactions-list">
             <ul>
               {latestTransactions.map((transaction, index) => (

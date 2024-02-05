@@ -34,13 +34,12 @@ body {
 .token-balances {
   flex: 1;
   padding: 10px;
-  overflow-y: auto; /* Enable vertical scrolling for the token balances */
 }
 
 .latest-transactions-container {
   flex: 1;
   height: 300px; /* Set the desired height */
-  overflow-y: auto; /* Enable vertical scrolling for the latest transactions */
+  overflow-y: auto; /* Enable vertical scrolling */
   margin-top: 20px; /* Adjust as needed */
   position: relative;
 }
@@ -63,4 +62,33 @@ body {
   padding: 10px;
   border-radius: 8px;
   margin-top: 10px;
+}
+
+.theme-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: #3498db; /* Default color, you can change it */
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add these styles for dark theme (you can customize this) */
+.dark-theme {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Add these styles for light theme (you can customize this) */
+.light-theme {
+  background-color: #ecf0f1;
+  color: #333;
 }
