@@ -11,6 +11,7 @@ function App() {
   const [latestTransactions, setLatestTransactions] = useState([]);
   const [web3, setWeb3] = useState(null);
   const [darkTheme, setDarkTheme] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState('EN'); 
 
   const connectToMetamask = async () => {
     try {
@@ -133,7 +134,7 @@ function App() {
     transform: 'translate(-50%, -50%)',
     padding: '20px',
     textAlign: 'center',
-    // Conditionally apply styles based on the theme
+
     backgroundColor: darkTheme ? 'black' : 'white',
     color: darkTheme ? 'white' : 'black',
   };
@@ -143,13 +144,20 @@ function App() {
     setDarkTheme((prevTheme) => !prevTheme);
   };
 
+
+  const changeLanguage = () => {
+    setCurrentLanguage((prevLanguage) => (prevLanguage === 'EN' ? 'ES' : 'EN'));
+  };
+
   return (
     <div className="app-container">
 
-<button className={`theme-button ${darkTheme ? 'dark-theme' : 'light-theme'}`} onClick={toggleTheme}>
+      <button className={`theme-button ${darkTheme ? 'dark-theme' : 'light-theme'}`} onClick={toggleTheme}>
         {darkTheme ? '🌙' : '☀️'}
       </button>
-
+      <button className={`language-button ${darkTheme ? 'dark-theme' : ''}`} onClick={changeLanguage}>
+        {currentLanguage}
+      </button>
       {connected ? (
         <div className="connected-container">
           <div className="metamask-info">
@@ -182,7 +190,9 @@ function App() {
       <div style={windowStyle}>
       <div className="balances-container">
         <div className="token-balances">
-          <h2>Token Balances</h2>
+        <h2>
+          {currentLanguage === 'EN' ? 'Token Balances' : 'Saldos de tokens'}
+        </h2>
           <table>
             <thead>
               <tr>
@@ -209,8 +219,12 @@ function App() {
         </div>
 
         <div className="latest-transactions-container">
-          <h2 className={`latest-transactions-header ${darkTheme ? 'dark-theme' : 'light-theme'}`}
-          >Latest Transactions</h2>
+          <div className={`latest-transactions-header ${darkTheme ? 'dark-theme' : 'light-theme'}`}>
+          
+          <h2>
+          {currentLanguage === 'EN' ? 'Latest Transactions' : 'Últimas transacciones'}
+        </h2>
+        </div>
           <div className="latest-transactions-list">
             <ul>
               {latestTransactions.map((transaction, index) => (
