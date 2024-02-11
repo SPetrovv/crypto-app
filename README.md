@@ -1,4 +1,4 @@
 # crypto-app
 
 
-![Image Alt text](/images/homepage.PNG)
+![Image Alt text](crypto-app/images/homepage.PNG)
